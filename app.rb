@@ -3,7 +3,8 @@ require 'sinatra'
 require 'json'
 
 get '/' do
-  "それは、まさに、うんちく、だね？"
+  @untikus = get_untiku
+  erb :index
 end
 
 get '/untiku_test.json' do
@@ -11,7 +12,12 @@ get '/untiku_test.json' do
 end
 
 get '/untiku.json' do
-  untiku = [
+  JSON.generate({'untiku' => get_untiku})
+end
+
+private
+def get_untiku
+  [
     "便器に白が多いのは、どんな家にも合わせやすいから",
     "日本人が１年間に使用するトイレットペーパーを地球に巻きつけると、地球１万周分になる",
     "烏樞沙摩（うすさま）明王という神様の加護を得られると、他人にシモの世話にならないで済むらしい",
@@ -23,5 +29,4 @@ get '/untiku.json' do
     "うさぎはトイレの場所を覚える",
     "初期のNASAでは、宇宙飛行士はおむつを履いていたらしい"
   ]
-  JSON.generate({'untiku' => untiku})
 end
