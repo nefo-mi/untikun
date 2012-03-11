@@ -101,7 +101,7 @@
                   <% @untikus.each do |untiku| %>
                     <tr>
                       <td>
-                        <%= untiku.encoding %>
+                        <%= untiku.force_encoding('UTF-8') %>
                       </td>
                     </tr>
                   <% end %>
