@@ -1,4 +1,4 @@
-<% #coding: UTF-8 %>
+<%# coding: UTF-8 %>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -101,6 +101,7 @@
                   <% @untikus.each do |untiku| %>
                     <tr>
                       <td>
+                        <%= untiku.encoding %>
                         <%= untiku.force_encoding('UTF-8') %>
                       </td>
                     </tr>
