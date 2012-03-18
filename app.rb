@@ -51,7 +51,7 @@ end
 
 private
 def get_untiku
-  Untiku.all.map {|untiku| untiku.untiku} 
+  Untiku.all.map {|untiku| h untiku.untiku} 
 end
 
 def get_untiku_old
