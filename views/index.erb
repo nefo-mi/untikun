@@ -1,4 +1,4 @@
-<%# coding: UTF-8 %>
+<%# encoding: UTF-8 %>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -42,27 +42,12 @@
     </div>
 
     <div class="container-fluid">
-      <div class="hero-unit">
-        <h1>それはまさに、うんちく、だね？</h1>
-        <p class="lead">
-        トイレの紙様アプリに表示させるうんちくを入力するWebサイトです。
-        あなたのうんちくを共有してみませんか？
-        うんちくを入力することで、
-        トイレットペーパーにうんちくを表示させることができるようになります。
-        </p>
-      </div>
-
-      <section id="input-untiku">
-      <div class="page-header">
-        <h2>使う前からトイレットペーパーにうんちくがついてる。<small>そんな日常</small></h2>
-      </div>
-
       <div class="row-fluid">
         <div class="span4">
-          <form class="form-horizontal">
+          <form class="form-horizontal" action="/" method="POST">
             <div class="control-group">
-              <label>うんちくを入力する。</label>
-              <textarea class="input-xlarge" id="textarea" rows="3"></textarea>
+              <label>それは、まさに、うんちく、だね？</label>
+              <textarea class="input-xlarge" name="untiku" id="untikutextarea" rows="3"></textarea>
             </div>
             <div class="control-group" style="text-align:right">
               100
@@ -89,34 +74,34 @@
             </div>
           </div>
         </div>
-        <div class="span7">
-          <table class="table table-striped">
+      <div class="span7">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th><h3>うんちく</h3></th>
+            </tr>
             <thead>
-              <tr>
-                <th><h3>うんちく</h3></th>
-              </tr>
-              <thead>
-                <tbody>
-                  <% @untikus.each do |untiku| %>
-                    <tr>
-                      <td>
-                        <%= untiku.force_encoding('UTF-8') %>
-                      </td>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-            </div>
+              <tbody>
+                <% @untikus.each do |untiku| %>
+                  <tr>
+                    <td>
+                      <%= h untiku.force_encoding('UTF-8') %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
           </div>
-          </section>
-
-          <hr>
-          <footer>
-          <div id="footer"><p>&copy; Team Toilet 2012</p></div>
-          </footer>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"><script>
-          </body>
-        </html>
+        </section>
+
+        <hr>
+        <footer>
+          <div id="footer"><p>&copy; Team Toilet 2012</p></div>
+        </footer>
+      </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"><script>
+  </body>
+</html>
 
