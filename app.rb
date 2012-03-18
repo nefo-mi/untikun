@@ -4,14 +4,15 @@ require 'json'
 require './untiku.rb'
 include Rack::Utils
 
+set :erb, :escape_html => true, :format => :html5
+
 helpers do
   include Rack::Utils
   alias_method :h, :escape_html
 end
 
 get '/' do
-  set :erb, :escape_html => true, :format => :html5
-  @untikus = get_untiku
+  @untikus = Untiku.all
   erb :index
 end
 
@@ -28,11 +29,24 @@ post '/' do
   untiku = Untiku.new(:untiku => params[:untiku].strip.chomp, :create_at => Time.now)
   if untiku.save
     status 200
-    redirect '/'
+    @info = 'nemui'
   else
     status 412
-    redirect '/'
+    @errors = 'nemui'
   end
+  redirect '/'
+end
+
+get '/delete/:id' do
+  untiku = Untiku.get params[:id]
+  if untiku.destroy
+    status 200
+    @info = 'nemui'
+  else
+    status 412
+    @errors = 'nemui'
+  end
+  redirect '/'
 end
 
 private
