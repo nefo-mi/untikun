@@ -27,6 +27,7 @@
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="#">トイレの紙様 Webサイト「うんちくん」(仮)</a>
+          <!---
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
@@ -36,6 +37,7 @@
             <form class="navbar-search pull-left">
               <input type="text" class="search-query" placeholder="search">
             </form>
+            -->
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -43,7 +45,6 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-
         <% unless @info.nil? %>
           <div class="alert alert-info fade in">
             <a class="close" data-dismiss="alert" href="#">&times;</a>
@@ -66,10 +67,10 @@
           <form class="form-horizontal" action="/" method="POST">
             <div class="control-group">
               <label>それは、まさに、うんちく、だね？</label>
-              <textarea class="input-xlarge" name="untiku" id="untikutextarea" rows="3"></textarea>
+              <textarea class="input-xlarge" name="untiku" id="untikutextarea" rows="3" maxlength="100"></textarea>
             </div>
             <div class="control-group" style="text-align:right">
-              100
+                    <span id="counter"></span>
               <button type="submit" class="btn"><i class="icon-heart"></i>うんちく！</button>
             </div>
           </form>
@@ -93,7 +94,7 @@
             </div>
           </div>
         </div>
-      <div class="span7">
+      <div class="span8">
         <table class="table table-striped">
           <thead>
             <tr>
@@ -105,7 +106,7 @@
                   <tr>
                     <td>
                       <%= h untiku.untiku.force_encoding('UTF-8') %>
-                      <a class="close" href="delete/<%= untiku.id %>">&times;</a>
+                      <a class="close" style="display:none" href="delete/<%= untiku.id %>">&times;</a>
                     </td>
                   </tr>
                 <% end %>
@@ -122,6 +123,25 @@
       </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script>
+            $(function(){
+                    $('td').hover(
+                            function(){
+                                    $(this).addClass('big');
+                                    $('.close', this).show();
+                            },
+                            function(){
+                                    $(this).removeClass('big');
+                                    $('.close', this).hide();
+                            }
+                    );
+            });
+            $(function(){
+                    $("#untikutextarea").keyup(
+                    function(){ $("#counter").text($(this).val().length);
+                    });
+            });
+    </script>
   </body>
 </html>
 
