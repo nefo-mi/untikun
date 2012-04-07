@@ -51,7 +51,7 @@ end
 
 private
 def get_untiku
-  Untiku.all.map {|untiku| h untiku.untiku} 
+  Untiku.all.map {|untiku| h untiku.untiku}
 end
 
 def get_untiku_old
@@ -65,6 +65,8 @@ def get_untiku_old
     "日本でトイレを意味する言葉は、およそ５０種類以上ある",
     "トイレットペーパーの質は国によって違う",
     "うさぎはトイレの場所を覚える",
-    "初期のNASAでは、宇宙飛行士はおむつを履いていたらしい"
+    "初期のNASAでは、宇宙飛行士はおむつを履いていたらしい",
+    "世界一大きなトイレは千葉県市原市にある",
+    "世界一大きなトイレは女性専用"
   ]
 end
